@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xml:lang="en">
+        <head>
+            <title>Watcher - {{ date }}</title>
+            <link rel="icon" type="image/png" href="/static/fav.png" />
+            <link rel="stylesheet" type="text/css" href="/static/main.css" />
+            <link rel="stylesheet" type="text/css" href="/static/buttons.css" />
+            <script type="text/javascript" src="/static/jquery.min.js"></script>
+            <script type="text/javascript" src="/static/main.js"></script>
+            <script type="text/javascript">
+                $( document ).ready(function() {
+                    loadEvents("{{ date }}");
+                    setKeyboard();
+                });
+            </script>
+        </head>
+        <body>
+            <div style="max-width: 1000px; margin: 30px auto;">
+                <h3><a href="{{ url_for('web_index') }}">Home -> </a> {{ date }}</h3>
+                <div class="frame-container-outer">
+                    <div class="frame-container">
+                        <div id="frame">
+                            <img id="frame_img" onclick="openFullImage(this)">
+                            <button id="hires_btn" class="btn" onclick="">
+                                <span class="btn__content_outside">
+                                    <span class="btn__content">hi res</span>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                    <div id="framesList"></div>
+                </div>
+                <div id="status">
+                    <div class="bar_element date"></div>
+                    <div class="bar_element info"></div>
+                    <div class="bar_element frame-navigation">
+                        <button class="btn" onclick="loadFrame(--selectedFrameIndex)">
+                            <span class="btn__content_outside">
+                                <span class="btn__content">Previous</span>
+                            </span>
+                            <span class="btn__glitch"></span>
+                            <span class="btn__label">&lt;</span>
+                        </button>
+                        <button class="btn" onclick="loadFrame(++selectedFrameIndex)">
+                            <span class="btn__content_outside">
+                                <span class="btn__content">Next</span>
+                            </span>
+                            <span class="btn__glitch"></span>
+                            <span class="btn__label">&gt;</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </body>
+</html>
